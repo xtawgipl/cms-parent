@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 	
-	private static String apiTitle = "党建+大数据——RESTFful APIS";
+	private static String apiTitle = "cms";
 	
 	private static String version = "1.1";
 	

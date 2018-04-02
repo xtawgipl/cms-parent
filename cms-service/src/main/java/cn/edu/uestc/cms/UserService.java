@@ -1,6 +1,7 @@
 package cn.edu.uestc.cms;
 
 import cn.edu.uestc.cms.entity.UserBean;
+import cn.edu.uestc.cms.page.Page;
 
 public interface UserService {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,6 @@ public interface UserService {
     int updateByPrimaryKeySelective(UserBean record);
 
     int updateByPrimaryKey(UserBean record);
+
+    void listByPage(Page<UserBean> page);
 }

@@ -103,4 +103,10 @@
       role_id = #{roleId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="listByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+  </select>
 </mapper>

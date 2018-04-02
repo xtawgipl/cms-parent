@@ -1,9 +1,9 @@
 package cn.edu.uestc.cms.controller;
 
+import cn.edu.uestc.cms.UserService;
 import cn.edu.uestc.cms.constant.Constant;
-import cn.edu.uestc.cms.entity.UserInfoBean;
+import cn.edu.uestc.cms.entity.UserBean;
 import cn.edu.uestc.cms.page.Page;
-import cn.edu.uestc.cms.party.build.IUserInfoService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,13 +34,12 @@ public class UserInfoController {
     @Resource
     private Constant constant;
 
-    @Resource(name="userInfoService")
-    private IUserInfoService userInfoService;
+    @Resource(name="userService")
+    private UserService userService;
 
     @GetMapping("/")
     public String main(ModelAndView model) {
-        model.addObject("time", new Date());
-        model.addObject("message", "2222222222");
+
         return "main_index";
     }
 
@@ -72,17 +70,20 @@ public class UserInfoController {
      */
     @PostMapping("/userInfoList")
     @ResponseBody
-    public String userInfoList(Page<UserInfoBean> page) {
+    public String userInfoList(Page<UserBean> page) {
         logger.info("page = " + JSONObject.toJSONString(page));
+        userService.listByPage(page);
         JSONObject data = new JSONObject();
-        data.put("total", 7);
-        String[] reals = new String[]{"习大大","刘三","张三","李四","王五","小六","李三"};
-        String[] logins = new String[]{"wangsi","刀剑如梦","梦林","依一","依晨","庶庶","顶替"};
         JSONArray rows = new JSONArray();
-        for(int i = 0; i < 7; ++i){
+        data.put("total", page.getTotalSize());
+        List<UserBean> results = page.getResults();
+        for(UserBean user : results){
             JSONObject obj = new JSONObject();
-            obj.put("realName", reals[i]);
-            obj.put("loginName", logins[i]);
+            obj.put("realName", user.getRealName());
+            obj.put("loginName", user.getLoginName());
+            obj.put("id", user.getId());
+            obj.put("isAdmin", user.getIsAdmin());
+            obj.put("roleId", user.getRoleId());
             rows.add(obj);
         }
 

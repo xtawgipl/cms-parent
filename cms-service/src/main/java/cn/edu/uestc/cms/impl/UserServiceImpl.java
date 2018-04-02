@@ -2,8 +2,9 @@ package cn.edu.uestc.cms.impl;
 
 import cn.edu.uestc.cms.UserService;
 import cn.edu.uestc.cms.entity.UserBean;
-import cn.edu.uestc.cms.mapper.RoleMapper;
 import cn.edu.uestc.cms.mapper.UserMapper;
+import cn.edu.uestc.cms.page.Page;
+import cn.edu.uestc.cms.page.annotion.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -36,5 +37,11 @@ public class UserServiceImpl implements UserService{
 
     public int updateByPrimaryKey(UserBean record){
         return userMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    @Pageable
+    public void listByPage(Page<UserBean> page) {
+        userMapper.listByPage(page);
     }
 }
