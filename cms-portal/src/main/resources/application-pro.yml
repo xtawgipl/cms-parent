@@ -1,0 +1,37 @@
+server:
+    context-path: /protal
+    port: 8082
+logging:
+    config: classpath:logback-boot.xml
+spring:
+    http:
+        encoding:
+            charset: UTF-8
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+jasypt:
+  encryptor:
+    password: 123456
+#分页配置
+pagehelper:
+    #分页时需要返回总页数据及总行数 isCount = true为需要返回，expireAfterAccess总数缓存时间(单位秒，距最后一次访问时间)，maximumSize可缓存的记录数
+    count:
+        isCount: true
+        expireAfterAccess: 10
+        maximumSize: 1000
+    #如果输入非法则默认但第一页 
+    defaultPageNo: 1
+    #如果如果输入非法则默认页大小
+    defaultPageSize: 10
+## master 数据源配置
+master:
+    datasource:
+        url: jdbc:mysql://localhost:3306/student_master?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: ENC(90f475c28d4efd62)
+## cluster 数据源配置
+cluster:
+    datasource:
+        url: jdbc:mysql://localhost:3306/student_cluster?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: ENC(90f475c28d4efd62)

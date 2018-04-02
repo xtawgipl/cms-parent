@@ -1,0 +1,31 @@
+/party-build-common/target
+/party-build-entity/target
+/party-build-mapper/target
+/party-build-portal/target
+/party-build-portal-freemarker/target
+/party-build-service/target
+/party-build-util/target
+
+# Eclipse Project files
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA Project files
+.idea
+*.iml
+*.ipr
+*.iws
+
+*.class
+*.log
+*.bak
+*.tem
+*.temp
+
+bin/
+gen/
+.DS_Store
+Thumbs.db
+
+

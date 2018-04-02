@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 指定数据连接驱动jar地址 -->
+    <classPathEntry location="E:/repo/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar"/>
+            
+    <context id="my" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="false"/> <!-- 是否生成注释代时间戳-->
+            <property name="suppressAllComments" value="true"/> <!-- 是否取消注释 -->
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://119.29.26.226/cms?useSSL=false"
+                        userId="root" password="root"/>
+
+        <javaModelGenerator targetPackage="cn.edu.uestc.cms.entity" targetProject="../cms-entity/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="cn.edu.uestc.cms.mapper" targetProject="../cms-mapper/src/main/java"  type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table
+               tableName="t_content"
+               domainObjectName="ContentBean"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               enableInsert="true"
+               selectByPrimaryKeyQueryId="true"
+               enableSelectByPrimaryKey="true"/>
+        <table
+                tableName="t_mould"
+                domainObjectName="MouldBean"
+        enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+                enableInsert="true"
+                selectByPrimaryKeyQueryId="true"
+                enableSelectByPrimaryKey="true">
+            <columnOverride column="summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="html" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </table>
+        <table
+                tableName="t_resource"
+                domainObjectName="ResourceBean"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+                enableInsert="true"
+                selectByPrimaryKeyQueryId="true"
+                enableSelectByPrimaryKey="true"/>
+        <table
+                tableName="t_role"
+                domainObjectName="RoleBean"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+                enableInsert="true"
+                selectByPrimaryKeyQueryId="true"
+                enableSelectByPrimaryKey="true"/>
+        <table
+                tableName="t_role_resource_ref"
+                domainObjectName="RoleResourceRefBean"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+                enableInsert="true"
+                selectByPrimaryKeyQueryId="true"
+                enableSelectByPrimaryKey="true"/>
+        <table
+                tableName="t_user"
+                domainObjectName="UserBean"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+                enableInsert="true"
+                selectByPrimaryKeyQueryId="true"
+                enableSelectByPrimaryKey="true"/>
+    </context>
+</generatorConfiguration>

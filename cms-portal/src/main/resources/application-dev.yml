@@ -1,0 +1,56 @@
+server:
+    context-path: /cms
+    port: 8080
+logging:
+    config: classpath:logback-boot.xml
+spring:
+    mvc:
+        view:
+            prefix: /WEB-INF/jsp/
+            suffix: .jsp
+    http:
+        encoding:
+            charset: UTF-8
+        multipart:
+            enabled: true
+            maxFileSize: 5MB
+            maxRequestSize: 20MB
+            location: D:/temp
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+    thymeleaf:
+        cache: false
+#分页配置
+pagehelper:
+    #分页时需要返回总页数据及总行数 isCount = true为需要返回，expireAfterAccess总数缓存时间(单位秒，距最后一次访问时间)，maximumSize可缓存的记录数
+    count:
+        isCount: true
+        expireAfterAccess: 10
+        maximumSize: 1000
+    #如果输入非法则默认但第一页 
+    defaultPageNo: 1
+    #如果如果输入非法则默认页大小
+    defaultPageSize: 10
+## itms 数据源配置
+itms:
+    datasource:
+        url: jdbc:mysql://localhost:3306/partbuild?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+
+# 常量配置
+constant:
+    photoUrlPrefix: http://127.0.0.1:8082/party/
+    photoPathPrefix: D:/
+    photo:
+        #党组织生活情况
+        partyCulture: temp/
+        #党费缴纳情况
+        partyFee: temp/
+        #时政要闻
+        news: temp/
+        #谈话记录
+        talkNotes: temp/
+        #党员先锋模范
+        partyModel: temp/
