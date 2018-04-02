@@ -1,7 +1,6 @@
 package cn.edu.uestc.cms.test;
 
 import cn.edu.uestc.cms.Application;
-import cn.edu.uestc.cms.party.build.IPolicemanService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -10,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import javax.annotation.Resource;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
@@ -19,12 +16,10 @@ public class ApplicationTest {
 
     private Logger logger = LoggerFactory.getLogger(ApplicationTest.class);
 
-    @Resource(name = "policemanService")
-    private IPolicemanService policemanService;
 
     @Test
     public void test(){
-
+        logger.info("test....");
     }
 
 
