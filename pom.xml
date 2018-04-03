@@ -22,6 +22,7 @@
 		<aspectjrt.version>1.8.10</aspectjrt.version>
 		<logback.version>1.1.11</logback.version>
 		<mapper-spring-boot-starter.version>1.1.1</mapper-spring-boot-starter.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 	</properties>
 	<modules>
 		<module>cms-util</module>
@@ -135,6 +136,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
