@@ -2,6 +2,7 @@ package cn.edu.uestc.cms.page.starter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 @Configuration
 @ConfigurationProperties(prefix="pagehelper")

@@ -1,4 +1,4 @@
-package cn.edu.uestc.cms.configuration;
+package cn.edu.uestc.cms.configuration.datasource;
 
 import cn.edu.uestc.cms.page.dialect.DialectType;
 import cn.edu.uestc.cms.page.interceptor.PageInterceptor;
@@ -20,31 +20,31 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@MapperScan(basePackages = ItmsDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "itmsSqlSessionFactory")
-public class ItmsDataSourceConfig {
+@MapperScan(basePackages = CmsDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "cmsSqlSessionFactory")
+public class CmsDataSourceConfig {
 	
-//	private Logger logger = LoggerFactory.getLogger(ItmsDataSourceConfig.class);
+//	private Logger logger = LoggerFactory.getLogger(CmsDataSourceConfig.class);
 	
-	// 精确到 itms 目录，以便跟其他数据源隔离
+	// 精确到 cms 目录，以便跟其他数据源隔离
     static final String PACKAGE = "cn.edu.uestc.cms.mapper";
     static final String MAPPER_LOCATION = "classpath:mapper/*.xml";
     
 	@Primary
-	@Bean(name = "itmsDataSource")
-	@ConfigurationProperties(prefix="itms.datasource")
-	public DataSource itmsDataSource() {
+	@Bean(name = "cmsDataSource")
+	@ConfigurationProperties(prefix="cms.datasource")
+	public DataSource cmsDataSource() {
         return new DruidDataSource();
 	}
 
-	@Bean(name = "itmsTransactionManager")
+	@Bean(name = "cmsTransactionManager")
     @Primary
-    public DataSourceTransactionManager itmsTransactionManager(@Qualifier("itmsDataSource") DataSource itmsDataSource) {
-        return new DataSourceTransactionManager(itmsDataSource);
+    public DataSourceTransactionManager cmsTransactionManager(@Qualifier("cmsDataSource") DataSource cmsDataSource) {
+        return new DataSourceTransactionManager(cmsDataSource);
     }
 	
-	@Bean(name = "itmsSqlSessionFactory")
+	@Bean(name = "cmsSqlSessionFactory")
     @Primary
-    public SqlSessionFactory itmsSqlSessionFactory(@Qualifier("itmsDataSource") DataSource itmsDataSource,
+    public SqlSessionFactory cmsSqlSessionFactory(@Qualifier("cmsDataSource") DataSource cmsDataSource,
                                                    @Qualifier("pageProterties") PageProterties pageProterties) throws Exception {
         PageInterceptor pageInterceptor = new PageInterceptor();
         Properties properties = new Properties();
@@ -54,9 +54,9 @@ public class ItmsDataSourceConfig {
         properties.setProperty("count.maximumSize", String.valueOf(pageProterties.getCount().getMaximumSize()));
         pageInterceptor.setProperties(properties);
 	    SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(itmsDataSource);
+        sessionFactory.setDataSource(cmsDataSource);
         sessionFactory.setPlugins(new Interceptor[] { pageInterceptor });
-        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(ItmsDataSourceConfig.MAPPER_LOCATION));
+        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(CmsDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
     }
 }

@@ -33,9 +33,9 @@ pagehelper:
     #如果如果输入非法则默认页大小
     defaultPageSize: 10
 ## itms 数据源配置
-itms:
+cms:
     datasource:
-        url: jdbc:mysql://localhost:3306/partbuild?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://119.29.26.226:3306/cms?useUnicode=true&characterEncoding=utf8
         username: root
         password: root
 
