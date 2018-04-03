@@ -26,7 +26,7 @@ public class ItmsDataSourceConfig {
 //	private Logger logger = LoggerFactory.getLogger(ItmsDataSourceConfig.class);
 	
 	// 精确到 itms 目录，以便跟其他数据源隔离
-    static final String PACKAGE = "com.tydic.traffic.mapper";
+    static final String PACKAGE = "cn.edu.uestc.cms.mapper";
     static final String MAPPER_LOCATION = "classpath:mapper/*.xml";
     
 	@Primary
