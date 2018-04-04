@@ -1,26 +1,8 @@
 server:
     context-path: /cms
-    port: 8080
+    port: 8081
 logging:
     config: classpath:logback-boot.xml
-spring:
-    mvc:
-        view:
-            prefix: /WEB-INF/jsp/
-            suffix: .jsp
-    http:
-        encoding:
-            charset: UTF-8
-        multipart:
-            enabled: true
-            maxFileSize: 5MB
-            maxRequestSize: 20MB
-            location: D:/temp
-    jackson:
-        date-format: yyyy-MM-dd HH:mm:ss
-        time-zone: GMT+8
-    thymeleaf:
-        cache: false
 #分页配置
 pagehelper:
     #分页时需要返回总页数据及总行数 isCount = true为需要返回，expireAfterAccess总数缓存时间(单位秒，距最后一次访问时间)，maximumSize可缓存的记录数

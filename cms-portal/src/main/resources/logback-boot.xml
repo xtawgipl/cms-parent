@@ -21,9 +21,10 @@
 			</encoder>
 		</appender>
 
-		<logger name="org.mybatis" level="info" />
+		<logger name="org.mybatis" level="debug" />
+		<logger name="cn.edu.uestc.cms" level="debug" />
 
-		<root level="info">
+		<root level="debug">
 			<appender-ref ref="CONSOLE" />
 		</root>
 	</springProfile>

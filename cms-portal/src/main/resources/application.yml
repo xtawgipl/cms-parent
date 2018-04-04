@@ -1,3 +1,24 @@
 spring:
     profiles:
         active: dev
+    mvc:
+        view:
+            prefix: /WEB-INF/jsp/
+            suffix: .jsp
+    http:
+        encoding:
+            charset: UTF-8
+            force: true
+            enabled: true
+    tomcat:
+        uri-encoding: UTF-8
+        multipart:
+            enabled: true
+            maxFileSize: 5MB
+            maxRequestSize: 20MB
+            location: D:/temp
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+    thymeleaf:
+        cache: false

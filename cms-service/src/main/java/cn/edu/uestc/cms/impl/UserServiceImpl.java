@@ -6,6 +6,7 @@ import cn.edu.uestc.cms.mapper.UserMapper;
 import cn.edu.uestc.cms.page.Page;
 import cn.edu.uestc.cms.page.annotion.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService{
         return userMapper.insertSelective(record);
     }
 
+    @Transactional
     public UserBean selectByPrimaryKey(Integer id){
         return userMapper.selectByPrimaryKey(id);
     }
