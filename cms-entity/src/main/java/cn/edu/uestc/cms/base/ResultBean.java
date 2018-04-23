@@ -10,7 +10,7 @@ import java.util.List;
  * @author zhangjj
  * @create 2017-08-19 17:43
  **/
-public class ResultBean {
+public class ResultBean<T> {
 
     private String code;
 
@@ -18,13 +18,13 @@ public class ResultBean {
 
     private String message;
 
-    private List<?> rows;
+    private List<T> rows;
 
     public ResultBean(){
 
     }
 
-    public ResultBean(String code, boolean success, String message, List<Object> rows) {
+    public ResultBean(String code, boolean success, String message, List<T> rows) {
         this.code = code;
         this.success = success;
         this.message = message;
@@ -73,11 +73,11 @@ public class ResultBean {
         this.message = message;
     }
 
-    public List<?> getRows() {
+    public List<T> getRows() {
         return rows;
     }
 
-    public void setRows(List<?> rows) {
+    public void setRows(List<T> rows) {
         this.rows = rows;
     }
 
